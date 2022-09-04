@@ -2,11 +2,19 @@
   display: flex;
   flex-direction: row;
   height: 100%;
+  width: 100%;
 }
 
 .column{
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  height: 100vh;
+}
+
+.column-fixed{
+  display: flex;
+  flex-wrap: wrap;
   flex-grow: 1;
   height: 100vh;
 }
@@ -29,6 +37,14 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+  }
+
+}
+
+@media screen and (max-width: 1200px) {
+
+  .rowColumn{
+    width: 33.3333% !important;
   }
 
 }

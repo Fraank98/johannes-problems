@@ -1,10 +1,10 @@
 import React from 'react'
 
-function RowColumn({ color, height, width }) {
+function RowColumn({ color, height, width, className }) {
   
   return (
   
-    <div style={{ backgroundColor: color, height: height, width: width }}></div>
+    <div className={className} style={{ backgroundColor: color, height: height, width: width }}></div>
   )
 }
 

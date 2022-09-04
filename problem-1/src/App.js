@@ -34,13 +34,11 @@ function App() {
           })
         }
       </div>
-      <div className="column">
+      <div className="column-fixed">
         {
-          Array.from(Array(5), (i) => {
-            const arrayColor = Array.from(Array(5), (i) => {
-              return getRandomColor();
-            })
-            return <Column randomColor={arrayColor} width={style.width2} column3 />
+          Array.from(Array(25), (i) => {
+            const color = getRandomColor();
+            return <RowColumn color={color} width={style.width2} className={"rowColumn"}/>
           })
         }
       </div>
