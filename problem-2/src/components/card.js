@@ -1,20 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { cardContext } from '../App.js'
 
-function Card({ color }) {
+function Card({ color, handleChoice }) {
 
   const { selectedCards, setSelectedCards, matched } = useContext(cardContext);
   const [isCardVisible, setIsCardVisible] = useState(true);
 
   const selectCard = () => {
-    setSelectedCards([...selectedCards, color]);
-    setIsCardVisible(true);
+    handleChoice(color);
   }
 
   useEffect(() => {
     setTimeout(() => {
       setIsCardVisible(false);
-    }, 3000);
+    }, 2000);
   }, []);
 
   return (
