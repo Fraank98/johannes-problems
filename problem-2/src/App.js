@@ -4,41 +4,47 @@ import Card from './components/card.js'
 
 export const cardContext = createContext();
 
-
 function App() {
 
   const [cards, setCards] = useState([]);
-  const [selectedCards, setSelectedCards] = useState([]);
   const [first, setFirst] = useState(null);
   const [second, setSecond] = useState(null);
+  const [firstShow, setFirstShow] = useState(true);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     const getRandomColor = () => {
       return '#' + Math.floor(Math.random() * 16777215).toString(16);
     }
-    
+
     let arrayColors = [];
-    
+
     for (let i = 0; i < 6; i++) {
       arrayColors[i] = { color: getRandomColor(), state: false };
     }
-    arrayColors = [...arrayColors, ...arrayColors];
+    arrayColors = [...arrayColors, ...arrayColors]
+      .map((color) => ({ ...color, id: Math.random() }))
 
     setCards(arrayColors);
-  },[])
+  }, [])
 
-  const handleChoice = (color) => {
-    console.log(color);
-    first ? setSecond(color) : setFirst(color);
+  const handleChoice = (card) => {
+    if (first && second) {
+      return;
+    } else first ? setSecond(card) : setFirst(card);
   };
 
   useEffect(() => {
     if (first && second) {
-      if (first === second) {
-        console.log("Giustooo")
+      if (first.color === second.color) {
+        setCount(count + 1);
+        console.log(count);
+        if (count === ((cards.length / 2) - 1)) {
+          setTimeout(() => { window.alert("GOOD!") }, 350);
+        }
         setCards(prevState => {
           return prevState.map(color => {
-            if (color.color === first) {
+            if (color.color === first.color) {
               return { ...color, state: true }
             } else return color
           })
@@ -46,23 +52,27 @@ function App() {
         setFirst(null);
         setSecond(null);
       } else {
-        setFirst(null);
-        setSecond(null);
+        setTimeout(() => {
+          setFirst(null);
+          setSecond(null);
+        }, 1000);
       }
     }
-  }, [first, second]);
+  }, [cards.length, count, first, second]);
 
-  console.log(cards);
+  useEffect(() => {
+    setTimeout(() => {
+      setFirstShow(false);
+    }, 2000);
+  }, []);
 
   return (
 
     <div className="container">
       {
-        cards.map((color, i) => {
+        cards.map((card) => {
           return (
-            <cardContext.Provider value={{ selectedCards, setSelectedCards }}>
-              <Card color={color.color} key={i} handleChoice={handleChoice} />
-            </cardContext.Provider>
+            <Card card={card} key={card.id} handleChoice={handleChoice} show={card === first || card === second || card.state} firstShow={firstShow} />
           )
         })
       }

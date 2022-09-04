@@ -2,17 +2,10 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
-  line-height: 1;
+  height: 100vh;
 }
 
 .container{
-  /* display: flex;
-  column-gap: 50px;
-  row-gap: 50px;
-  flex-wrap: wrap;
-  align-content: space-around;
-  justify-content: center; */
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   column-gap: 100px;
@@ -33,12 +26,24 @@ body{
   background-color: aquamarine !important;
 }
 
+@media screen and (max-width: 720px) {
+
+  .container{
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  }
+
+}
+
 @media screen and (max-width: 520px) {
 
   .card{
     height: 4em;
     width: 4em;
     gap: 6px;
+  }
+
+  .container{
+    column-gap: 80px;
   }
 
 }
