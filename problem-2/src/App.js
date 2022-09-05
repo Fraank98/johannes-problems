@@ -31,7 +31,9 @@ function App() {
   const handleChoice = (card) => {
     if (first && second) {
       return;
-    } else first ? setSecond(card) : setFirst(card);
+    } else if (card !== first) {
+      first ? setSecond(card) : setFirst(card);
+    }
   };
 
   useEffect(() => {
