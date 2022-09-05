@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-function Card({ card, handleChoice, show, firstShow }) {
+function Card({ card, handleChoice, show, firstShow, wrong }) {
 
   const selectCard = () => {
     handleChoice(card);
@@ -8,7 +8,12 @@ function Card({ card, handleChoice, show, firstShow }) {
 
   return (
     <>
-      <div className={(show || firstShow) ? 'card' : 'card back'} style={{ backgroundColor: card.color }} onClick={selectCard}></div>
+      <div className="card" onClick={selectCard}>
+        <div className={(show || firstShow) ? 'show' : ''}>
+          <div className={(show ? (wrong ? 'wrong' : 'selected') :'front') } style={{ backgroundColor: card.color }}></div>
+          <div className='back'></div>
+        </div>
+      </div>
     </>
 
   )

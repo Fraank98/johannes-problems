@@ -7,8 +7,9 @@ function App() {
   const [cards, setCards] = useState([]);
   const [first, setFirst] = useState(null);
   const [second, setSecond] = useState(null);
-  const [firstShow, setFirstShow] = useState(true);
+  const [firstShow, setFirstShow] = useState(false);
   const [count, setCount] = useState(0);
+  const [notAvailable, setNotAvailable] = useState(true);
 
   useEffect(() => {
     const getRandomColor = () => {
@@ -27,7 +28,7 @@ function App() {
   }, [])
 
   const handleChoice = (card) => {
-    if (first && second) {
+    if ((first && second) || notAvailable) {
       return;
     } else if (card !== first) {
       first ? setSecond(card) : setFirst(card);
@@ -38,7 +39,6 @@ function App() {
     if (first && second) {
       if (first.color === second.color) {
         setCount(count + 1);
-        console.log(count);
         if (count === ((cards.length / 2) - 1)) {
           setTimeout(() => { window.alert("GOOD!") }, 350);
         }
@@ -62,7 +62,11 @@ function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      setFirstShow(false);
+      setFirstShow(true);
+      setTimeout(() => {
+        setFirstShow(false);
+        setNotAvailable(false);
+      }, 2000);
     }, 2000);
   }, []);
 
@@ -72,7 +76,7 @@ function App() {
       {
         cards.map((card) => {
           return (
-            <Card card={card} key={card.id} handleChoice={handleChoice} show={card === first || card === second || card.state} firstShow={firstShow} />
+            <Card card={card} key={card.id} handleChoice={handleChoice} show={card === first || card === second || card.state} firstShow={firstShow} wrong={ (first && second) && (first.color !== second.color) && (card.state === false)}/>
           )
         })
       }

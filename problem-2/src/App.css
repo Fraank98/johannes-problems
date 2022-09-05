@@ -3,7 +3,7 @@ body{
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);}
 
 .container{
   display: grid;
@@ -18,12 +18,68 @@ body{
   gap: 10px;
   height: 6em;
   width: 6em;
-  border-radius: 5px;
-  box-shadow: 2px 2px #c8c8c8;
+  cursor: pointer;
 }
 
-.back{
-  background-color: aquamarine !important;
+.card .front{
+  height: 6em;
+  width: 6em;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+  transform : rotateY(90deg) ;
+  transition : all ease-in 0.2s ;
+  position : absolute ;
+}
+
+.show .front {
+  transform: rotateY(0deg) ;
+  transition-delay : 0.2s ;
+}
+
+.card .back {
+  transition : all ease-in 0.2s ;
+  transition-delay : 0.2s ;
+  height: 6em;
+  width: 6em;
+  background-color: white !important;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+  border: 1px solid #d16ba5;
+}
+
+.show .back { 
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}
+
+.card .selected {
+  height: 6em;
+  width: 6em;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px 5px white;
+  transform : rotateY(90deg) ;
+  transition : all ease-in 0.2s ;
+  position : absolute ;
+}
+
+.show .selected {
+  transform: rotateY(0deg) ;
+  transition-delay : 0.2s ;
+}
+
+.card .wrong {
+  height: 6em;
+  width: 6em;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px 5px rgb(255, 0, 0);
+  transform : rotateY(90deg) ;
+  transition : all ease-in 0.2s ;
+  position : absolute ;
+}
+
+.show .wrong {
+  transform: rotateY(0deg) ;
+  transition-delay : 0.2s ;
 }
 
 @media screen and (max-width: 720px) {
