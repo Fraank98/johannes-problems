@@ -1,8 +1,6 @@
 import './App.css';
-import { useEffect, useState, createContext } from 'react'
+import { useEffect, useState } from 'react'
 import Card from './components/card.js'
-
-export const cardContext = createContext();
 
 function App() {
 
