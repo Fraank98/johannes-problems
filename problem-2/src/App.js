@@ -28,7 +28,7 @@ function App() {
   }, [])
 
   const handleChoice = (card) => {
-    if ((first && second) || notAvailable) {
+    if ((first && second) || notAvailable || card.state) {
       return;
     } else if (card !== first) {
       first ? setSecond(card) : setFirst(card);
