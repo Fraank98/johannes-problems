@@ -1,7 +1,7 @@
 body{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
@@ -10,7 +10,7 @@ body{
   text-align: center;
   font-family: 'Satisfy';
   font-size: 7rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   text-shadow: 3px 1px 2px rgba(0,0,0,0.4);
 }
 
@@ -18,8 +18,8 @@ body{
   display: grid;
   justify-items: center;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  column-gap: 100px;
-  row-gap: 50px;
+  column-gap: 90px;
+  row-gap: 30px;
 }
 
 .card{
@@ -116,6 +116,16 @@ body{
   transition-delay : 0.2s ;
 }
 
+@media screen and (min-width: 770px) and (max-width: 1024px) {
+  .title{
+    font-size: 4rem;
+  }
+
+  .container-cards{
+    row-gap: 20px;
+  }
+}
+
 @media screen and (max-width: 768px) {
 
   .title{
@@ -155,6 +165,49 @@ body{
 
 }
 
+@media screen and (min-width: 670px) and (min-height: 850px) {
+
+  .card{
+    width: 13em;
+  }
+
+  .title{
+    font-size: 6rem;
+  }
+
+  .container-cards{
+    row-gap: 120px !important;
+    column-gap: 30px !important;
+    padding-left: 3%;
+  }
+
+  .card .back{
+    height: 10em;
+    width: 10em;
+  }
+
+  .card .selected{
+    height: 10em;
+    width: 10em;
+  }
+
+  .card .wrong {
+    height: 10em;
+    width: 10em;
+  }
+
+  .card .right {
+    height: 10em;
+    width: 10em;
+  }
+
+  .card .front{
+    height: 10em;
+    width: 10em;
+  }
+
+}
+
 @media screen and (max-width: 600px) {
 
   .card{
@@ -172,6 +225,10 @@ body{
 
   .card{
     gap: 4px;
+  }
+
+  .container-cards{
+    padding-left: 2%;
   }
 
   .card .back{
@@ -209,6 +266,19 @@ body{
 
 }
 
+@media screen and (min-width: 380px) and (min-height: 800px) {
+  .container-cards{
+    row-gap: 90px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (min-height: 800px) {
+  .container-cards{
+    row-gap: 30px;
+  }
+}
+
+
 
 @media screen and (max-width: 380px) {
 
@@ -233,8 +303,12 @@ body{
 
 @media screen and (max-width: 320px) {
 
+  body{
+    align-items: center;
+  }
+
   .title{
-    margin-bottom: 10rem;
+    margin-bottom: 3rem;
   }
 
   .card{

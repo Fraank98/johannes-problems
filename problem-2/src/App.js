@@ -73,7 +73,7 @@ function App() {
 
   return (
     <>
-      <div className='title'>Memory Card</div>
+      <div className='title'>Memory Game</div>
       <div className="container-cards">
         {
           cards.map((card) => {
