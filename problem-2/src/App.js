@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react'
 import Card from './components/card.js'
+import { shuffle } from './utils/shuffle.js'
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
     arrayColors = [...arrayColors, ...arrayColors]
       .map((color) => ({ ...color, id: Math.random() }))
 
-    setCards(arrayColors);
+    setCards(shuffle(arrayColors));
   }, [])
 
   const handleChoice = (card) => {
@@ -40,7 +41,7 @@ function App() {
       if (first.color === second.color) {
         setCount(count + 1);
         if (count === ((cards.length / 2) - 1)) {
-          setTimeout(() => { window.alert("GOOD!") }, 350);
+          setTimeout(() => { window.alert("GOOD!") }, 1000);
         }
         setCards(prevState => {
           return prevState.map(color => {
@@ -76,7 +77,16 @@ function App() {
       {
         cards.map((card) => {
           return (
-            <Card card={card} key={card.id} handleChoice={handleChoice} show={card === first || card === second || card.state} firstShow={firstShow} wrong={ (first && second) && (first.color !== second.color) && (card.state === false)}/>
+            <Card
+              card={card}
+              key={card.id}
+              handleChoice={handleChoice}
+              show={card === first || card === second || card.state}
+              firstShow={firstShow}
+              notAvailable={notAvailable}
+              wrong={(first && second) && (first.color !== second.color) && (card.state === false)}
+              right={card.state}
+            />
           )
         })
       }
