@@ -3,10 +3,20 @@ body{
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);}
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
 
-.container{
+.title{
+  text-align: center;
+  font-family: 'Satisfy';
+  font-size: 7rem;
+  margin-bottom: 4rem;
+  text-shadow: 3px 1px 2px rgba(0,0,0,0.4);
+}
+
+.container-cards{
   display: grid;
+  justify-items: center;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   column-gap: 100px;
   row-gap: 50px;
@@ -25,7 +35,7 @@ body{
   height: 6em;
   width: 6em;
   border-radius: 5px;
-  box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 16px -2px rgba(0,0,0,0.4);
   transform : rotateY(90deg) ;
   transition : all ease-in 0.2s ;
   position : absolute ;
@@ -43,7 +53,7 @@ body{
   width: 6em;
   background-color: white !important;
   border-radius: 5px;
-  box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 16px -2px rgba(0,0,0,0.4);
   border: 1px solid #d16ba5;
 }
 
@@ -76,7 +86,8 @@ body{
   height: 6em;
   width: 6em;
   border-radius: 5px;
-  box-shadow: 0px 0px 15px 5px rgb(255, 0, 0);
+  /* box-shadow: 0px 0px 15px 5px rgb(255, 0, 0); */
+  box-shadow: 0px 0px 15px 10px #d16ba5;
   transform : rotateY(90deg) ;
   transition : all ease-in 0.2s ;
   position : absolute ;
@@ -86,8 +97,10 @@ body{
   height: 6em;
   width: 6em;
   border-radius: 5px;
-  background-color: rgb(30, 255, 0) !important;
-  box-shadow: 0px 0px 15px 5px rgb(30, 255, 0);
+  /* background-color: rgb(30, 255, 0) !important;
+  box-shadow: 0px 0px 15px 5px rgb(30, 255, 0); */
+  background-color: rgb(93 250 242) !important;
+  box-shadow: 0px 0px 15px 5px rgb(93 250 242);
   transform : rotateY(90deg) ;
   transition : all ease-in 0.2s ;
   position : absolute ;
@@ -103,59 +116,162 @@ body{
   transition-delay : 0.2s ;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
 
-  .container{
+  .title{
+    font-size: 5rem;
+  }
+
+  .container-cards{
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   }
 
+  .card .back{
+    height: 5em;
+    width: 5em;
+  }
+
+  .card .selected{
+    height: 5em;
+    width: 5em;
+  }
+
+  .card .wrong {
+    height: 5em;
+    width: 5em;
+  }
+
+  .card .right {
+    height: 5em;
+    width: 5em;
+  }
+
+  .card .front{
+    height: 5em;
+    width: 5em;
+  }
+
+  
+
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 600px) {
 
   .card{
-    height: 4em;
-    width: 4em;
     gap: 6px;
   }
 
-  .container{
-    column-gap: 80px;
+  .container-cards{
+    column-gap: 5px;
   }
+  
 
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
 
   .card{
     gap: 4px;
   }
 
-  .container{
-    column-gap: 80px;
+  .card .back{
+    height: 5em;
+    width: 5em;
+  }
+
+  .card .selected{
+    height: 5em;
+    width: 5em;
+  }
+
+  .card .wrong {
+    height: 5em;
+    width: 5em;
+  }
+
+  .card .right {
+    height: 5em;
+    width: 5em;
+  }
+
+  .card .front{
+    height: 5em;
+    width: 5em;
+  }
+
+  .container-cards{
+    column-gap: 40px;
+  }
+
+  .title{
+    font-size: 4rem;
   }
 
 }
 
+
+@media screen and (max-width: 380px) {
+
+  .container-cards{
+    column-gap: 30px;
+    row-gap: 35px;
+  }
+
+}
 
 @media screen and (max-width: 370px) {
 
-  .card{
-    height: 3em;
-    width: 3em;
-    gap: 2px;
+  .title{
+    font-size: 3rem;
   }
 
-  .container{
-    column-gap: 65px;
+  .container-cards{
+    column-gap: 10px;
   }
 
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 320px) {
 
-  .container{
-    column-gap: 30px;
+  .title{
+    margin-bottom: 10rem;
+  }
+
+  .card{
+    width: 3em;
+  }
+
+  .container-cards{
+    column-gap: 35px;
+    row-gap: 5px;
+  }
+
+  .title{
+    font-size: 2rem;
+  }
+  .card .back{
+    height: 3em;
+    width: 3em;
+  }
+
+  .card .selected{
+    height: 3em;
+    width: 3em;
+  }
+
+  .card .wrong {
+    height: 3em;
+    width: 3em;
+  }
+
+  .card .right {
+    height: 3em;
+    width: 3em;
+  }
+
+  .card .front{
+    height: 3em;
+    width: 3em;
   }
 
 }

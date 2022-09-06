@@ -72,25 +72,27 @@ function App() {
   }, []);
 
   return (
-
-    <div className="container">
-      {
-        cards.map((card) => {
-          return (
-            <Card
-              card={card}
-              key={card.id}
-              handleChoice={handleChoice}
-              show={card === first || card === second || card.state}
-              firstShow={firstShow}
-              notAvailable={notAvailable}
-              wrong={(first && second) && (first.color !== second.color) && (card.state === false)}
-              right={card.state}
-            />
-          )
-        })
-      }
-    </div>
+    <>
+      <div className='title'>Memory Card</div>
+      <div className="container-cards">
+        {
+          cards.map((card) => {
+            return (
+              <Card
+                card={card}
+                key={card.id}
+                handleChoice={handleChoice}
+                show={card === first || card === second || card.state}
+                firstShow={firstShow}
+                notAvailable={notAvailable}
+                wrong={(first && second) && (first.color !== second.color) && (card.state === false)}
+                right={card.state}
+              />
+            )
+          })
+        }
+      </div>
+    </>
   );
 }
 

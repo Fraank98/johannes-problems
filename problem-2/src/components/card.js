@@ -7,6 +7,7 @@ function Card({ card, handleChoice, show, firstShow, wrong, right, notAvailable 
 
   const selectCard = () => {
     handleChoice(card);
+    setHover(false);
   };
 
   useEffect(() => {
