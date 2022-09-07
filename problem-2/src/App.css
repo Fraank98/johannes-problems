@@ -1,39 +1,53 @@
 body{
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   height: 100vh;
+  width: 100%;
   background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  font-family: 'Satisfy';
+}
+
+.header{
+  height: 10vh;
 }
 
 .title{
   text-align: center;
-  font-family: 'Satisfy';
-  font-size: 7rem;
+  font-size: 12vh;
   margin-bottom: 2rem;
   text-shadow: 3px 1px 2px rgba(0,0,0,0.4);
 }
 
 .container-cards{
+  justify-items: center;
+  width: 100%;
+}
+
+.grid {
   display: grid;
   justify-items: center;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  column-gap: 90px;
-  row-gap: 30px;
+  column-gap: 3vh;
+  row-gap: 5vh;
+  height: 75vh;
+  max-height: 75vh;
+  max-width: 700px;
+  margin: auto;
 }
 
 .card{
-  display: grid;
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  gap: 10px;
-  height: 6em;
-  width: 6em;
+  height: 12vh;
+  width: 12vh;
   cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.initials{
+  color: #ededed;
 }
 
 .card .front{
-  height: 6em;
-  width: 6em;
+  height: 100%;
+  width: 100%;
   border-radius: 5px;
   box-shadow: 0 8px 16px -2px rgba(0,0,0,0.4);
   transform : rotateY(90deg) ;
@@ -49,12 +63,16 @@ body{
 .card .back {
   transition : all ease-in 0.2s ;
   transition-delay : 0.2s ;
-  height: 6em;
-  width: 6em;
+  height: 100%;
+  width: 100%;
   background-color: white !important;
   border-radius: 5px;
   box-shadow: 0 8px 16px -2px rgba(0,0,0,0.4);
   border: 1px solid #d16ba5;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hover {
@@ -68,8 +86,8 @@ body{
 }
 
 .card .selected {
-  height: 6em;
-  width: 6em;
+  height: 100%;
+  width: 100%;
   border-radius: 5px;
   box-shadow: 0px 0px 15px 5px white;
   transform : rotateY(90deg) ;
@@ -83,10 +101,9 @@ body{
 }
 
 .card .wrong {
-  height: 6em;
-  width: 6em;
+  height: 100%;
+  width: 100%;
   border-radius: 5px;
-  /* box-shadow: 0px 0px 15px 5px rgb(255, 0, 0); */
   box-shadow: 0px 0px 15px 10px #d16ba5;
   transform : rotateY(90deg) ;
   transition : all ease-in 0.2s ;
@@ -94,11 +111,9 @@ body{
 }
 
 .card .right {
-  height: 6em;
-  width: 6em;
+  height: 100%;
+  width: 100%;
   border-radius: 5px;
-  /* background-color: rgb(30, 255, 0) !important;
-  box-shadow: 0px 0px 15px 5px rgb(30, 255, 0); */
   background-color: rgb(93 250 242) !important;
   box-shadow: 0px 0px 15px 5px rgb(93 250 242);
   transform : rotateY(90deg) ;
@@ -116,236 +131,62 @@ body{
   transition-delay : 0.2s ;
 }
 
-@media screen and (min-width: 770px) and (max-width: 1024px) {
-  .title{
-    font-size: 4rem;
-  }
-
-  .container-cards{
-    row-gap: 20px;
-  }
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 235px) and (max-width: 320px) {
 
   .title{
-    font-size: 5rem;
+    font-size: 7vh;
   }
 
-  .container-cards{
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  .grid {
+    grid-template: repeat(3, 0fr) / repeat(3, 1fr);
+    column-gap: 0vh;
   }
-
-  .card .back{
-    height: 5em;
-    width: 5em;
-  }
-
-  .card .selected{
-    height: 5em;
-    width: 5em;
-  }
-
-  .card .wrong {
-    height: 5em;
-    width: 5em;
-  }
-
-  .card .right {
-    height: 5em;
-    width: 5em;
-  }
-
-  .card .front{
-    height: 5em;
-    width: 5em;
-  }
-
-  
-
 }
 
-@media screen and (min-width: 670px) and (min-height: 850px) {
-
-  .card{
-    width: 13em;
-  }
+@media screen and (min-width: 468px) and (max-width: 681px) {
 
   .title{
-    font-size: 6rem;
+    font-size: 8vh;
   }
-
-  .container-cards{
-    row-gap: 120px !important;
-    column-gap: 30px !important;
-    padding-left: 3%;
-  }
-
-  .card .back{
-    height: 10em;
-    width: 10em;
-  }
-
-  .card .selected{
-    height: 10em;
-    width: 10em;
-  }
-
-  .card .wrong {
-    height: 10em;
-    width: 10em;
-  }
-
-  .card .right {
-    height: 10em;
-    width: 10em;
-  }
-
-  .card .front{
-    height: 10em;
-    width: 10em;
-  }
-
 }
 
-@media screen and (max-width: 600px) {
-
-  .card{
-    gap: 6px;
-  }
-
-  .container-cards{
-    column-gap: 5px;
-  }
-  
-
-}
-
-@media screen and (max-width: 480px) {
-
-  .card{
-    gap: 4px;
-  }
-
-  .container-cards{
-    padding-left: 2%;
-  }
-
-  .card .back{
-    height: 5em;
-    width: 5em;
-  }
-
-  .card .selected{
-    height: 5em;
-    width: 5em;
-  }
-
-  .card .wrong {
-    height: 5em;
-    width: 5em;
-  }
-
-  .card .right {
-    height: 5em;
-    width: 5em;
-  }
-
-  .card .front{
-    height: 5em;
-    width: 5em;
-  }
-
-  .container-cards{
-    column-gap: 40px;
-  }
+@media screen and (min-width: 321px) and (max-width: 467px) {
 
   .title{
-    font-size: 4rem;
-  }
-
-}
-
-@media screen and (min-width: 380px) and (min-height: 800px) {
-  .container-cards{
-    row-gap: 90px;
+    font-size: 6vh;
   }
 }
 
-@media screen and (min-width: 1200px) and (min-height: 800px) {
-  .container-cards{
-    row-gap: 30px;
-  }
-}
-
-
-
-@media screen and (max-width: 380px) {
-
-  .container-cards{
-    column-gap: 30px;
-    row-gap: 35px;
-  }
-
-}
-
-@media screen and (max-width: 370px) {
+@media screen and (max-height: 460px) {
 
   .title{
-    font-size: 3rem;
+    margin-bottom: 1rem;
   }
 
-  .container-cards{
-    column-gap: 10px;
+  .initials{
+    font-size: 1.2em;
   }
-
 }
 
-@media screen and (max-width: 320px) {
-
-  body{
-    align-items: center;
-  }
+@media screen and (min-width: 300px) and (min-height: 920px) {
 
   .title{
-    margin-bottom: 3rem;
+    font-size: 10vh;
+  }
+
+  .grid{
+    column-gap: 1vh;
   }
 
   .card{
-    width: 3em;
+    height: 10vh;
+    width: 10vh;
   }
+}
 
-  .container-cards{
-    column-gap: 35px;
-    row-gap: 5px;
-  }
+@media screen and (min-width: 330px) and (min-height: 950px) {
 
   .title{
-    font-size: 2rem;
+    font-size: 8vh;
   }
-  .card .back{
-    height: 3em;
-    width: 3em;
-  }
-
-  .card .selected{
-    height: 3em;
-    width: 3em;
-  }
-
-  .card .wrong {
-    height: 3em;
-    width: 3em;
-  }
-
-  .card .right {
-    height: 3em;
-    width: 3em;
-  }
-
-  .card .front{
-    height: 3em;
-    width: 3em;
-  }
-
 }

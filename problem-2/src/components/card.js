@@ -27,7 +27,9 @@ function Card({ card, handleChoice, show, firstShow, wrong, right, notAvailable 
       <div className="card" onClick={selectCard} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
         <div className={(show || firstShow) ? 'show' : ''}>
           <div className={(show ? (wrong ? 'wrong' : (isRight ? 'right' : 'selected')) :'front') } style={{ backgroundColor: card.color }}></div>
-          <div className={hover ? (notAvailable ? 'back' : 'back hover') : 'back'}></div>
+          <div className={hover ? (notAvailable ? 'back' : 'back hover') : 'back'}>
+            <h1 className='initials'>MG</h1>
+          </div>
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react'
-import Card from './components/card.js'
+import Card from './components/Card.js'
 import { shuffle } from './utils/shuffle.js'
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     const getRandomColor = () => {
-      return '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+      return '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
     }
 
     let arrayColors = [];
@@ -75,22 +75,24 @@ function App() {
     <>
       <div className='title'>Memory Game</div>
       <div className="container-cards">
-        {
-          cards.map((card) => {
-            return (
-              <Card
-                card={card}
-                key={card.id}
-                handleChoice={handleChoice}
-                show={card === first || card === second || card.state}
-                firstShow={firstShow}
-                notAvailable={notAvailable}
-                wrong={(first && second) && (first.color !== second.color) && (card.state === false)}
-                right={card.state}
-              />
-            )
-          })
-        }
+        <div className='grid'>
+          {
+            cards.map((card) => {
+              return (
+                <Card
+                  card={card}
+                  key={card.id}
+                  handleChoice={handleChoice}
+                  show={card === first || card === second || card.state}
+                  firstShow={firstShow}
+                  notAvailable={notAvailable}
+                  wrong={(first && second) && (first.color !== second.color) && (card.state === false)}
+                  right={card.state}
+                />
+              )
+            })
+          }
+        </div>
       </div>
     </>
   );
