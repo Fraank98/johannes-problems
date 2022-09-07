@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     const getRandomColor = () => {
-      return '#' + Math.floor(Math.random() * 16777215).toString(16);
+      return '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
     }
 
     let arrayColors = [];
