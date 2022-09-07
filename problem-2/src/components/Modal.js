@@ -1,10 +1,11 @@
-import React, { useContext} from 'react'
-import gif from '../assets/spongeBob.gif'
-import {GameContext} from '../App.js'
+import React, { useContext } from 'react'
+import spongeBob from '../assets/spongeBob.gif'
+import confetti from '../assets/confetti.gif'
+import { GameContext } from '../App.js'
 
 function Modal() {
 
-    const setPlayAgain = useContext( GameContext );
+    const setPlayAgain = useContext(GameContext);
 
     const playAgain = () => {
         setPlayAgain(true);
@@ -12,7 +13,8 @@ function Modal() {
 
     return (
         <div className='modal'>
-            <img className='modal-content' src={gif} alt="" />
+            <img className='spongeBob' src={spongeBob} alt="" />
+            <img className='confetti' src={confetti} alt="" />
             <button className='btn-playAgain' onClick={playAgain}>Play Again</button>
         </div>
     )
