@@ -1,7 +1,10 @@
 import './App.css';
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import Card from './components/Card.js'
+import Modal from './components/Modal';
 import { shuffle } from './utils/shuffle.js'
+
+export const GameContext = createContext()
 
 function App() {
 
@@ -11,6 +14,8 @@ function App() {
   const [firstShow, setFirstShow] = useState(false);
   const [count, setCount] = useState(0);
   const [notAvailable, setNotAvailable] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [playAgain, setPlayAgain] = useState(false);
 
   useEffect(() => {
     const getRandomColor = () => {
@@ -41,7 +46,7 @@ function App() {
       if (first.color === second.color) {
         setCount(count + 1);
         if (count === ((cards.length / 2) - 1)) {
-          setTimeout(() => { window.alert("GOOD!") }, 1000);
+          setTimeout(() => { setIsModalOpen(true); }, 1400);
         }
         setCards(prevState => {
           return prevState.map(color => {
@@ -71,10 +76,16 @@ function App() {
     }, 2000);
   }, []);
 
+  useEffect(() => {
+    if (playAgain) {
+      window.location.reload();
+    }
+  }, [playAgain]);
+
   return (
     <>
       <div className='title'>Memory Game</div>
-      <div className="container-cards">
+      <div className="container">
         <div className='grid'>
           {
             cards.map((card) => {
@@ -94,6 +105,12 @@ function App() {
           }
         </div>
       </div>
+      {
+        isModalOpen &&
+        <GameContext.Provider value={setPlayAgain}>
+          <Modal />
+        </GameContext.Provider>
+      }
     </>
   );
 }
