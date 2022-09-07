@@ -85,7 +85,7 @@ function App() {
   return (
     <>
       <div className='title'>Memory Game</div>
-      <div className="container">
+      <div className="container" style={{opacity: isModalOpen ? 0.4 : 1}} >
         <div className='grid'>
           {
             cards.map((card) => {
